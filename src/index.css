@@ -352,14 +352,14 @@
 
   h5,
   .h5 {
-    @apply text-lg font-medium text-security-dark;
+    @apply text-lg font-medium text-foreground;
     line-height: var(--line-height-normal);
     margin-bottom: var(--spacing-sm);
   }
 
   h6,
   .h6 {
-    @apply text-base font-medium text-security-dark;
+    @apply text-base font-medium text-foreground;
     line-height: var(--line-height-normal);
     margin-bottom: var(--spacing-xs);
   }
