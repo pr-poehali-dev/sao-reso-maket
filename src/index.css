@@ -2,53 +2,271 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Insurance Company Design System */
+@layer utilities {
+  /* Responsive Typography */
+  .responsive-text {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+  }
+
+  .responsive-heading {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+  }
+
+  .responsive-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  /* Responsive Spacing */
+  .responsive-padding {
+    padding: clamp(1rem, 4vw, 2rem);
+  }
+
+  .responsive-margin {
+    margin: clamp(1rem, 4vw, 2rem);
+  }
+
+  /* Container Utilities */
+  .container-insurance {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-insurance {
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-insurance {
+      padding: 0 2rem;
+    }
+  }
+
+  /* Responsive Grid Utilities */
+  .grid-insurance {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .grid-insurance {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-insurance {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  /* Insurance Dashboard Layout */
+  .dashboard-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .dashboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .dashboard-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Responsive Card Layouts */
+  .card-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .card-stack {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+
+  /* Focus States for Accessibility */
+  .focus-insurance {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  /* Animation Utilities */
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Shadow Utilities */
+  .shadow-insurance {
+    box-shadow:
+      0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-insurance-lg {
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-insurance-hover {
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  .shadow-insurance-hover:hover {
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
 @layer base {
   :root {
+    /* Core color palette - Professional Blues, Whites, Grays */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 12% 16%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
+    /* Professional Blue Primary */
+    --primary: 210 85% 49%;
     --primary-foreground: 210 40% 98%;
+    --primary-hover: 210 85% 42%;
+    --primary-light: 210 85% 95%;
 
+    /* Clean Secondary Colors */
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-hover: 210 40% 92%;
 
+    /* Insurance Brand Colors */
+    --trust-blue: 207 90% 25%;
+    --confidence-blue: 210 85% 49%;
+    --reliability-gray: 210 8% 45%;
+    --security-dark: 210 12% 16%;
+
+    /* Status Colors for Insurance */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --danger: 0 84% 60%;
+    --danger-foreground: 0 0% 98%;
+    --info: 210 85% 49%;
+    --info-foreground: 0 0% 98%;
+
+    /* Card and Surface Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 210 12% 16%;
+    --card-shadow: 210 40% 5%;
+
+    /* Interactive Elements */
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 12% 16%;
+
+    /* Muted and Subtle Colors */
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
+    --muted-hover: 210 40% 92%;
 
+    /* Accent Colors */
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
+    /* Form and Input Colors */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --input-focus: 210 85% 49%;
+    --ring: 210 85% 49%;
+
+    /* Destructive Actions */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Border Radius */
+    --radius: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
 
-    --radius: 0.5rem;
-
+    /* Sidebar Navigation */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-primary: 210 85% 49%;
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 210 85% 49%;
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Typography Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+
+    /* Line Heights */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Insurance Component Specific */
+    --policy-card-bg: 0 0% 100%;
+    --policy-card-border: 214.3 31.8% 91.4%;
+    --claim-status-pending: 38 92% 50%;
+    --claim-status-approved: 142 76% 36%;
+    --claim-status-rejected: 0 84% 60%;
+    --premium-highlight: 210 85% 49%;
+    --coverage-badge: 210 40% 96.1%;
   }
 
   .dark {
@@ -96,6 +314,197 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+    line-height: var(--line-height-normal);
+  }
+
+  /* Typography Hierarchy */
+  h1,
+  .h1 {
+    @apply text-4xl font-bold tracking-tight text-security-dark;
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  h2,
+  .h2 {
+    @apply text-3xl font-semibold tracking-tight text-security-dark;
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-md);
+  }
+
+  h3,
+  .h3 {
+    @apply text-2xl font-semibold text-security-dark;
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-md);
+  }
+
+  h4,
+  .h4 {
+    @apply text-xl font-semibold text-security-dark;
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  h5,
+  .h5 {
+    @apply text-lg font-medium text-security-dark;
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  h6,
+  .h6 {
+    @apply text-base font-medium text-security-dark;
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  p {
+    @apply text-base text-foreground;
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .text-lead {
+    @apply text-lg text-muted-foreground;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .text-small {
+    @apply text-sm text-muted-foreground;
+    line-height: var(--line-height-normal);
+  }
+
+  .text-muted {
+    @apply text-muted-foreground;
+  }
+
+  /* Modern Button Styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+    min-height: 2.5rem;
+    padding: 0 1rem;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary-hover border border-border;
+  }
+
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground;
+  }
+
+  .btn-ghost {
+    @apply text-foreground hover:bg-muted hover:text-foreground;
+  }
+
+  .btn-link {
+    @apply text-primary underline-offset-4 hover:underline px-0;
+  }
+
+  .btn-destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  }
+
+  /* Button Sizes */
+  .btn-sm {
+    @apply h-8 px-3 text-xs;
+  }
+
+  .btn-lg {
+    @apply h-12 px-6 text-base;
+  }
+
+  .btn-xl {
+    @apply h-14 px-8 text-lg;
+  }
+
+  /* Insurance Specific Button Variants */
+  .btn-trust {
+    @apply bg-trust-blue text-white hover:bg-trust-blue/90 shadow-sm;
+  }
+
+  .btn-success {
+    @apply bg-success text-success-foreground hover:bg-success/90;
+  }
+
+  .btn-warning {
+    @apply bg-warning text-warning-foreground hover:bg-warning/90;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-danger-foreground hover:bg-danger/90;
+  }
+
+  /* Form Elements */
+  .form-input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-input-focus focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .form-label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+
+  /* Card Components */
+  .card {
+    @apply rounded-lg border border-policy-card-border bg-policy-card-bg text-card-foreground shadow-sm;
+  }
+
+  .card-header {
+    @apply flex flex-col space-y-1.5 p-6;
+  }
+
+  .card-title {
+    @apply text-2xl font-semibold leading-none tracking-tight;
+  }
+
+  .card-description {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .card-content {
+    @apply p-6 pt-0;
+  }
+
+  .card-footer {
+    @apply flex items-center p-6 pt-0;
+  }
+
+  /* Insurance Specific Components */
+  .policy-card {
+    @apply card p-6 hover:shadow-md transition-shadow;
+  }
+
+  .claim-status {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .claim-status-pending {
+    @apply bg-warning/10 text-warning border border-warning/20;
+  }
+
+  .claim-status-approved {
+    @apply bg-success/10 text-success border border-success/20;
+  }
+
+  .claim-status-rejected {
+    @apply bg-danger/10 text-danger border border-danger/20;
+  }
+
+  .premium-highlight {
+    @apply text-2xl font-bold text-premium-highlight;
+  }
+
+  .coverage-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-coverage-badge text-foreground;
   }
 }
